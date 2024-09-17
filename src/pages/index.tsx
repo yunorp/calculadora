@@ -20,13 +20,6 @@ import Head from 'next/head';
 import { useEffect } from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
-{
-  "extends": "next",
-  "rules": {
-    "react/no-unescaped-entities": "off",
-    "@next/next/no-page-custom-font": "off"
-  }
-}
 
 export default function Home() {
 
@@ -234,7 +227,7 @@ export default function Home() {
 
   const updateValores = (tipo: number, quantidade: number) => {
     const result1 = value1 * formData.tipo;
-    const result2 = QTDlockpick * 600 + QTDflipper * 1500 + QTDkit * 1000 + QTDkm  + QTDbateria * 3500 + QTDalicate * 1800 + QTDoleo * 1000 + QTDchave * 2000 + ReparoFora * 500 + QTDpneu * 500 + QTDcinto * 5000;
+    const result2 = QTDlockpick * 600 + QTDflipper * 1200 + QTDkit * 600 + QTDkm + QTDbateria * 3500 + QTDalicate * 900 + QTDoleo * 1200 + QTDchave * 900 + ReparoFora * 50 + QTDpneu * 50 + QTDcinto * 50;
     const result = result1 + result2;
     const valorMaoDeObra = result * 0.50;
     // valor com desconto aplicado
@@ -253,7 +246,7 @@ export default function Home() {
     e.preventDefault();
 
   const result3 = formData.quantidade * formData.tipo;
-  const result4 = formData.QTDlockpick * 600 + formData.QTDflipper * 1500 + formData.QTDkit * 1000 + formData.QTDkm + formData.QTDbateria * 3500 + formData.QTDalicate * 1800 + formData.QTDoleo * 1000 + formData.QTDchave * 2000 + formData.ReparoFora * 500 + formData.QTDpneu * 500 + formData.QTDcinto * 5000;
+  const result4 = formData.QTDlockpick * 600 + formData.QTDflipper * 1200 + formData.QTDkit * 600 + formData.QTDkm + formData.QTDbateria * 3500 + formData.QTDalicate * 900 + formData.QTDoleo * 1200 + formData.QTDchave * 900 + formData.ReparoFora * 500 + formData.QTDpneu * 500 + formData.QTDcinto * 5000;
   const resultTotal = result3 + result4;
   const valorMaoDeObraAprendiz = resultTotal * 0.50;
   // valor com desconto aplicado
@@ -337,7 +330,7 @@ export default function Home() {
   
 
   const result3 = formData.quantidade * formData.tipo;
-  const result4 = formData.QTDlockpick * 600 + formData.QTDflipper * 1500 + formData.QTDkit * 1000 + formData.QTDkm + formData.QTDbateria * 3500 + formData.QTDalicate * 1800 + formData.QTDoleo * 1000 + formData.QTDchave * 2000 + formData.ReparoFora * 500 + formData.QTDpneu * 500 + formData.QTDcinto * 5000;
+  const result4 = formData.QTDlockpick * 600 + formData.QTDflipper * 1200 + formData.QTDkit * 600 + formData.QTDkm + formData.QTDbateria * 3500 + formData.QTDalicate * 900 + formData.QTDoleo * 1200 + formData.QTDchave * 00 + formData.ReparoFora * 50 + formData.QTDpneu * 50 + formData.QTDcinto * 50;
   const resultTotal = result3 + result4;
   const valorMaoDeObraAprendiz = resultTotal * 0.50;
   // valor com desconto aplicado
@@ -417,7 +410,7 @@ export default function Home() {
         <div className={styles.containerBox}>
           <div className={styles.box1}>  
             <div className={styles.boxTitulo}>
-              <h1>Calculadora</h1>
+              <h1>Calculadora DigitalDen</h1>
             </div>
             <div className={styles.boxInputs1}>            
               <form className={styles.box2} onSubmit={handleSubmit}>
@@ -449,14 +442,14 @@ export default function Home() {
                     label="Age"                    
                   >
                     <MenuItem value={0}>Nenhum</MenuItem>
-                    <strong> NAO MEXER </strong>                    
-                    <MenuItem value={apenasReparo === true ? 00 : 00}>NAO MEXER</MenuItem>
-                    <MenuItem value={apenasReparo === true ? 00 : 00}>NAO MEXER</MenuItem>
-                    <MenuItem value={apenasReparo === true ? 00 : 00}>NAO MEXER</MenuItem>
-                    <MenuItem value={apenasReparo === true ? 00 : 00}>NAO MEXER</MenuItem>
-                    <MenuItem value={apenasReparo === true ? 00 : 00}>NAO MEXER</MenuItem>
-                    <strong> NAO MEXER </strong>   
-                    <MenuItem value={apenasReparo === true ? 1000 : 650}>NAO MEXER</MenuItem>      
+                    <strong> CARRO </strong>                    
+                    <MenuItem value={apenasReparo === true ? 0 : 0}>D</MenuItem>
+                    <MenuItem value={apenasReparo === true ? 0 : 0}>C</MenuItem>
+                    <MenuItem value={apenasReparo === true ? 0 : 0}>B</MenuItem>
+                    <MenuItem value={apenasReparo === true ? 0 : 0}>A</MenuItem>
+                    <MenuItem value={apenasReparo === true ? 0 : 0}>S</MenuItem>
+                    <strong> MOTO </strong>   
+                    <MenuItem value={apenasReparo === true ? 0 : 0}>M</MenuItem>      
                   </Select>
                 </FormControl>
                 <FormControl sx={{ m: 1, width: '20ch' }}>
@@ -524,7 +517,7 @@ export default function Home() {
                     value={QTDoleo}
                     onChange={handleQTDoleoChange}
                     id="filled-number"
-                    label="QTD CELULAR"
+                    label="QTD Celular"
                     name="QTDoleo"
                     type="number"
                     InputLabelProps={{
@@ -539,7 +532,7 @@ export default function Home() {
                     value={QTDchave}
                     onChange={handleQTDchaveChange}
                     id="filled-number"
-                    label="QTD Tablet"
+                    label="SECRET"
                     name="QTDkit"
                     type="number"
                     InputLabelProps={{
@@ -554,7 +547,7 @@ export default function Home() {
                     value={QTDalicate}
                     onChange={handleQTDalicateChange}
                     id="filled-number"
-                    label="QTD Cera Simples"
+                    label="QTD Tablet"
                     name="QTDalicate"
                     type="number"
                     InputLabelProps={{
@@ -569,7 +562,7 @@ export default function Home() {
                     value={QTDbateria}
                     onChange={handleQTDbateriaChange}
                     id="filled-number"
-                    label="produto secreto"
+                    label="secret"
                     name="QTDbateria"
                     type="number"
                     InputLabelProps={{
@@ -584,7 +577,7 @@ export default function Home() {
                     value={QTDpneu}
                     onChange={handleQTDpneuChange}
                     id="filled-number"
-                    label="produto secreto"
+                    label="secret"
                     name="QTDpneu"
                     type="number"
                     InputLabelProps={{
@@ -599,7 +592,7 @@ export default function Home() {
                     value={QTDcinto}
                     onChange={handleQTDcintoChange}
                     id="filled-number"
-                    label="produto secreto"
+                    label="secret"
                     name="QTDcinto"
                     type="number"
                     InputLabelProps={{
@@ -613,7 +606,7 @@ export default function Home() {
                 
 
                 <FormControl variant='standard' sx={{ m: 1, width: '20ch' }}>
-                  <InputLabel id="demo-simple-select-label">Teve Delivery?</InputLabel>
+                  <InputLabel id="demo-simple-select-label">Teve Guincho?</InputLabel>
                   <Select
                     type='number'
                     labelId="demo-simple-select-label"
@@ -621,12 +614,12 @@ export default function Home() {
                     onChange={handleQTDkmChange}
                     value={String(QTDkm)}
                     name="ReparoFora"
-                    label="Teve DELIVERY?"                    
+                    label="Teve reparo fora da mecanica?"                    
                   >
                     <MenuItem value={0}>Não Teve</MenuItem>
-                    <MenuItem value={50}>Sul</MenuItem>
-                    <MenuItem value={70}>Sandy</MenuItem> 
-                    <MenuItem value={70}>Paleto</MenuItem>        
+                    <MenuItem value={500}>Sul</MenuItem>
+                    <MenuItem value={700}>Sandy</MenuItem> 
+                    <MenuItem value={1000}>Paleto</MenuItem>        
                   </Select>
                 </FormControl>
 
@@ -639,7 +632,7 @@ export default function Home() {
                     onChange={handleReparoForaChange}
                     value={String(ReparoFora)}
                     name="ReparoFora"
-                    label="Teve DELIVERY?"                    
+                    label="Teve reparo fora da mecanica?"                    
                   >
                     <MenuItem value={1}>Sim</MenuItem>
                     <MenuItem value={0}>Não</MenuItem>      
@@ -728,7 +721,7 @@ export default function Home() {
           </section>             
         </div>
         <footer className={styles.assinatura}>
-          <p>© Feito por <a target='_blank' href="https://www.twitch.tv/yunorp_">Yunorp_</a></p>
+          <p>© Feito por <a target='_blank' href="https://ellysonalves.github.io/Meu-Portfolio/">Éllyson Alves</a></p>
         </footer>
       </main>
   )
