@@ -27,11 +27,11 @@ export default function Home() {
 
   const [value1, setValue1] = React.useState<number>(1);
   const [value2, setValue2] = React.useState<number>(0);
-  const [QTDcarregador, setQTDcarregador] = React.useState<number>(0);
-  const [QTDradio, setQTDradio] = React.useState<number>(0);
-  const [QTDvpn, setQTDvpn] = React.useState<number>(0);
-  const [QTDtablet, setQTDtablet] = React.useState<number>(0);
-  const [QTDcelular, setQTDcelular] = React.useState<number>(0);
+  const [QTDlockpick, setQTDlockpick] = React.useState<number>(0);
+  const [QTDflipper, setQTDflipper] = React.useState<number>(0);
+  const [QTDkit, setQTDkit] = React.useState<number>(0);
+  const [QTDchave, setQTDchave] = React.useState<number>(0);
+  const [QTDalicate, setQTDalicate] = React.useState<number>(0);
   const [QTDoleo, setQTDoleo] = React.useState<number>(0);
   const [QTDpneu, setQTDpneu] = React.useState<number>(0);
   const [QTDbateria, setQTDbateria] = React.useState<number>(0);
@@ -75,7 +75,7 @@ export default function Home() {
     const { name, value } = e.target;
   
     // Verifica se o campo deve ser tratado como número
-    const updatedValue = ['tipo', 'quantidade', 'result', 'QTDcarregador', 'QTDradio', 'QTDvpn', 'QTDtablet', 'QTDcelular', 'QTDbateria','QTDoleo','ReparoFora','QTDchave'].includes(name)
+    const updatedValue = ['tipo', 'quantidade', 'result', 'QTDlockpick', 'QTDflipper', 'QTDkit', 'QTDkm', 'QTDalicate', 'QTDbateria','QTDoleo','ReparoFora','QTDchave'].includes(name)
       ? parseFloat(value)
       : value;
   
@@ -85,7 +85,7 @@ export default function Home() {
   // Movendo os cálculos para dentro da função updateValores
   let bonus = 0;
 
- // if (!apenasReparo) {
+  if (!apenasReparo) {
     if (value2 === 700) {
       bonus = 1700;
     } else if (value2 === 600) {
@@ -102,7 +102,7 @@ export default function Home() {
   }
 
   const result1 = value1 * value2;
-  const result2 = QTDcarregador * 600 + QTDradio * 1200 + QTDvpn * 600 + QTDtablet * 900 + QTDcelular * 1200 + QTDoleo * 00 + QTDchave * 00 + ReparoFora * 50 + QTDpneu * 00 + QTDcinto * 00 + bonus;
+  const result2 = QTDlockpick * 600 + QTDflipper * 1200 + QTDkit * 900 + QTDkm + QTDbateria * 3500 + QTDalicate * 1800 + QTDoleo * 1200 + QTDchave * 2000 + ReparoFora * 500 + QTDpneu * 500 + QTDcinto * 5000 + bonus;
   const result = result1 + result2;
   const valorAprendiz = result * 0.50;
   const valorMaquinaAprendiz = result - valorAprendiz;
@@ -114,11 +114,9 @@ export default function Home() {
 
 
   console.log('Debug updateValores:');
-  console.log('QTDcarregador:', QTDcarregador);
-  console.log('QTDradio:', QTDradio);
-  console.log('QTDvpn:', QTDvpn);
-  console.log('QTDtablet:', QTDtablet);
-  console.log('QTDcelular:', QTDcelular);
+  console.log('QTDlockpick:', QTDlockpick);
+  console.log('QTDflipper:', QTDflipper);
+  console.log('QTDkm:', QTDkm);
   console.log('result:', result);
   console.log('valorAprendiz:', valorAprendiz);
   console.log('valorMaquinaAprendiz:', valorMaquinaAprendiz);
@@ -133,11 +131,11 @@ export default function Home() {
     tipo: 0,
     quantidade: 0,
     desgastado: 1,
-    QTDcarregador: 0,
-    QTDradio: 0,
-    QTDvpn: 0,
-    QTDtablet: 0,
-    QTDcelular: 0,
+    QTDlockpick: 0,
+    QTDflipper: 0,
+    QTDchave: 0,
+    QTDalicate: 0,
+    QTDkit: 0,
     QTDoleo: 0,
     QTDbateria: 0,
     QTDpneu: 0,
@@ -149,7 +147,7 @@ export default function Home() {
     valorMaoDeObra: 0,
     result: 0, 
     role: 'GERENTE',
-    apenasReparo: false,
+    apenasReparo: true,
   });
 
   console.log({formData})
@@ -175,15 +173,15 @@ export default function Home() {
   
 
   const handleQTDlockpickChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQTDcarregador(Number(e.target.value));
+    setQTDlockpick(Number(e.target.value));
   };
   
   const handleQTDflipperChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQTDradio(Number(e.target.value));
+    setQTDflipper(Number(e.target.value));
   };
   
   const handleQTDkitChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQTDvpn(Number(e.target.value));
+    setQTDkit(Number(e.target.value));
   };
 
   const handleQTDchaveChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -229,7 +227,7 @@ export default function Home() {
 
   const updateValores = (tipo: number, quantidade: number) => {
     const result1 = value1 * formData.tipo;
-    const result2 = QTDcarregador * 600 + QTDradio * 1200 + QTDvpn * 600 + QTDtablet * 900 + QTDcelular * 1200 + QTDoleo * 1000 + QTDchave * 2000 + ReparoFora * 50 + QTDpneu * 500 + QTDcinto * 5000;
+    const result2 = QTDlockpick * 600 + QTDflipper * 1500 + QTDkit * 1000 + QTDkm  + QTDbateria * 3500 + QTDalicate * 1800 + QTDoleo * 1000 + QTDchave * 2000 + ReparoFora * 500 + QTDpneu * 500 + QTDcinto * 5000;
     const result = result1 + result2;
     const valorMaoDeObra = result * 0.50;
     // valor com desconto aplicado
@@ -248,7 +246,7 @@ export default function Home() {
     e.preventDefault();
 
   const result3 = formData.quantidade * formData.tipo;
-  const result4 = formData.QTDcarregador * 600 + formData.QTDradio * 1200 + formData.QTDvpn * 600 + formData.QTDcelular * 1200 + formData.QTDalicate * 00 + formData.QTDoleo * 00 + formData.QTDchave * 00 + formData.ReparoFora * 0 + formData.QTDpneu * 00 + formData.QTDcinto * 00;
+  const result4 = formData.QTDlockpick * 600 + formData.QTDflipper * 1500 + formData.QTDkit * 1000 + formData.QTDkm + formData.QTDbateria * 3500 + formData.QTDalicate * 1800 + formData.QTDoleo * 1000 + formData.QTDchave * 2000 + formData.ReparoFora * 500 + formData.QTDpneu * 500 + formData.QTDcinto * 5000;
   const resultTotal = result3 + result4;
   const valorMaoDeObraAprendiz = resultTotal * 0.50;
   // valor com desconto aplicado
@@ -332,7 +330,7 @@ export default function Home() {
   
 
   const result3 = formData.quantidade * formData.tipo;
-  const result4 = formData.QTDcarregador * 600 + formData.QTDradio * 1200 + formData.QTDvpn * 600 + formData.QTDcelular * 1200 + formData.QTDalicate * 00 + formData.QTDoleo * 00 + formData.QTDchave * 00 + formData.ReparoFora * 50 + formData.QTDpneu * 00 + formData.QTDcinto * 00;
+  const result4 = formData.QTDlockpick * 600 + formData.QTDflipper * 1500 + formData.QTDkit * 1000 + formData.QTDkm + formData.QTDbateria * 3500 + formData.QTDalicate * 1800 + formData.QTDoleo * 1000 + formData.QTDchave * 2000 + formData.ReparoFora * 500 + formData.QTDpneu * 500 + formData.QTDcinto * 5000;
   const resultTotal = result3 + result4;
   const valorMaoDeObraAprendiz = resultTotal * 0.50;
   // valor com desconto aplicado
@@ -343,16 +341,16 @@ export default function Home() {
   formData.quantidade = value1;
   formData.tipo = value2;
   formData.desgastado = desgastado;
-  formData.QTDcarregador = QTDcarregador;
-  formData.QTDradio = QTDradio;
-  formData.QTDvpn = QTDvpn;
+  formData.QTDlockpick = QTDlockpick;
+  formData.QTDkit = QTDkit;
+  formData.QTDalicate= QTDalicate;
   formData.QTDchave = QTDchave;
   formData.QTDoleo = QTDoleo;
   formData.QTDbateria = QTDbateria;
   formData.QTDpneu = QTDpneu;
   formData.ReparoFora = ReparoFora;
   formData.QTDcinto = QTDcinto;
-  formData.QTDcelular = QTDcelular;
+  formData.QTDkm = QTDkm;
   formData.QTDflipper = QTDflipper;
   formData.result = resultTotal;
   formData.valorMaoDeObra = valorMaoDeObraAprendiz;
@@ -406,7 +404,7 @@ export default function Home() {
       
       <main className={styles.main}>
       <Head>
-        <title>Calculadora</title>
+        <title>Calculadora DigitalDen</title>
         <link rel="icon" href="/hayes.webp" />
       </Head>
         <div className={styles.containerBox}>
@@ -421,15 +419,15 @@ export default function Home() {
                           value={formData.custumizador}
                           onChange={handleVendedorChange}
                           id="filled-number"
-                          label="Nome do Mêcanico"
+                          label="Nome do Funcionario"
                           name='custumizador'
                           type="text"
                           variant="standard"
                         />
                 </FormControl>
 
-           //     <FormControl>
-                  <FormControlLabel control={<Checkbox checked={apenasReparo} onChange={handleApenasReparoChange} />} label="Apenas Reparo" />
+                <FormControl>
+                  <FormControlLabel control={<Checkbox checked={apenasReparo} onChange={handleApenasReparoChange} />} label="." />
                 </FormControl>
 
                 <FormControl variant='standard' sx={{ m: 1, width: '20ch' }}>
@@ -444,14 +442,14 @@ export default function Home() {
                     label="Age"                    
                   >
                     <MenuItem value={0}>Nenhum</MenuItem>
-                    <strong> CARRO </strong>                    
-                    <MenuItem value={apenasReparo === true ? 900 : 250}>D</MenuItem>
-                    <MenuItem value={apenasReparo === true ? 1100 : 400}>C</MenuItem>
-                    <MenuItem value={apenasReparo === true ? 1300 : 500}>B</MenuItem>
-                    <MenuItem value={apenasReparo === true ? 1500 : 600}>A</MenuItem>
-                    <MenuItem value={apenasReparo === true ? 1700 : 700}>S</MenuItem>
-                    <strong> MOTO </strong>   
-                    <MenuItem value={apenasReparo === true ? 1000 : 650}>M</MenuItem>      
+                    <strong> NAO MEXER </strong>                    
+                    <MenuItem value={apenasReparo === true ? 00 : 00}>NAO MEXER</MenuItem>
+                    <MenuItem value={apenasReparo === true ? 00 : 00}>NAO MEXER</MenuItem>
+                    <MenuItem value={apenasReparo === true ? 00 : 00}>NAO MEXER</MenuItem>
+                    <MenuItem value={apenasReparo === true ? 00 : 00}>NAO MEXER</MenuItem>
+                    <MenuItem value={apenasReparo === true ? 00 : 00}>NAO MEXER</MenuItem>
+                    <strong> NAO MEXER </strong>   
+                    <MenuItem value={apenasReparo === true ? 1000 : 650}>NAO MEXER</MenuItem>      
                   </Select>
                 </FormControl>
                 <FormControl sx={{ m: 1, width: '20ch' }}>
@@ -472,11 +470,11 @@ export default function Home() {
                 
                 <FormControl sx={{ m: 1, width: '20ch' }}>
                   <TextField
-                    value={QTDcarregador}
-                    onChange={handleQTDcarregadorChange}
+                    value={QTDlockpick}
+                    onChange={handleQTDlockpickChange}
                     id="filled-number"
                     label="QTD Carregador"
-                    name="QTDcarregador"
+                    name="QTDlockpick"
                     type="number"
                     InputLabelProps={{
                       shrink: true,
@@ -487,11 +485,11 @@ export default function Home() {
 
                 <FormControl sx={{ m: 1, width: '20ch' }}>
                   <TextField
-                    value={QTDradio}
-                    onChange={handleQTDradioChange}
+                    value={QTDflipper}
+                    onChange={handleQTDflipperChange}
                     id="filled-number"
                     label="QTD Radio"
-                    name="QTDradio"
+                    name="QTDflipper"
                     type="number"
                     InputLabelProps={{
                       shrink: true,
@@ -502,11 +500,11 @@ export default function Home() {
 
                 <FormControl sx={{ m: 1, width: '20ch' }}>
                   <TextField
-                    value={QTDvpn}
-                    onChange={handleQTDvpnChange}
+                    value={QTDkit}
+                    onChange={handleQTDkitChange}
                     id="filled-number"
                     label="QTD VPN"
-                    name="QTDvpn"
+                    name="QTDkit"
                     type="number"
                     InputLabelProps={{
                       shrink: true,
@@ -516,11 +514,11 @@ export default function Home() {
                 </FormControl>
                 <FormControl sx={{ m: 1, width: '20ch' }}>
                   <TextField
-                    value={QTDcelular}
-                    onChange={handleQTDcelularChange}
+                    value={QTDoleo}
+                    onChange={handleQTDoleoChange}
                     id="filled-number"
                     label="QTD CELULAR"
-                    name="QTDcelular"
+                    name="QTDoleo"
                     type="number"
                     InputLabelProps={{
                       shrink: true,
@@ -529,22 +527,22 @@ export default function Home() {
                   />
                 </FormControl>
 
-         //       <FormControl sx={{ m: 1, width: '20ch' }}>
+                <FormControl sx={{ m: 1, width: '20ch' }}>
                   <TextField
                     value={QTDchave}
                     onChange={handleQTDchaveChange}
                     id="filled-number"
-                    label="QTD Chave de fenda"
+                    label="QTD Tablet"
                     name="QTDkit"
                     type="number"
                     InputLabelProps={{
-                      shrink: false,
+                      shrink: true,
                     }}
                     variant="standard"
                   />
                 </FormControl>
 
-       //         <FormControl sx={{ m: 1, width: '20ch' }}>
+                <FormControl sx={{ m: 1, width: '20ch' }}>
                   <TextField
                     value={QTDalicate}
                     onChange={handleQTDalicateChange}
@@ -559,46 +557,46 @@ export default function Home() {
                   />
                 </FormControl>
 
-     //           <FormControl sx={{ m: 1, width: '20ch' }}>
+                <FormControl sx={{ m: 1, width: '20ch' }}>
                   <TextField
                     value={QTDbateria}
                     onChange={handleQTDbateriaChange}
                     id="filled-number"
-                    label="QTD Cera Profissional"
+                    label="produto secreto"
                     name="QTDbateria"
                     type="number"
                     InputLabelProps={{
-                      shrink: false,
+                      shrink: true,
                     }}
                     variant="standard"
                   />
                 </FormControl>
 
-    //            <FormControl sx={{ m: 1, width: '20ch' }}>
+                <FormControl sx={{ m: 1, width: '20ch' }}>
                   <TextField
                     value={QTDpneu}
                     onChange={handleQTDpneuChange}
                     id="filled-number"
-                    label="QTD de pneu"
+                    label="produto secreto"
                     name="QTDpneu"
                     type="number"
                     InputLabelProps={{
-                      shrink: false,
+                      shrink: true,
                     }}
                     variant="standard"
                   />
                 </FormControl>
 
- //               <FormControl sx={{ m: 1, width: '20ch' }}>
+                <FormControl sx={{ m: 1, width: '20ch' }}>
                   <TextField
                     value={QTDcinto}
                     onChange={handleQTDcintoChange}
                     id="filled-number"
-                    label="QTD de cinto de corrida"
+                    label="produto secreto"
                     name="QTDcinto"
                     type="number"
                     InputLabelProps={{
-                      shrink: false,
+                      shrink: true,
                     }}
                     variant="standard"
                   />
@@ -607,7 +605,7 @@ export default function Home() {
                 
                 
 
-//                <FormControl variant='standard' sx={{ m: 1, width: '20ch' }}>
+                <FormControl variant='standard' sx={{ m: 1, width: '20ch' }}>
                   <InputLabel id="demo-simple-select-label">Teve Delivery?</InputLabel>
                   <Select
                     type='number'
@@ -616,17 +614,17 @@ export default function Home() {
                     onChange={handleQTDkmChange}
                     value={String(QTDkm)}
                     name="ReparoFora"
-                    label="Teve reparo fora da mecanica?"                    
+                    label="Teve DELIVERY?"                    
                   >
                     <MenuItem value={0}>Não Teve</MenuItem>
-                    <MenuItem value={500}>Sul</MenuItem>
-                    <MenuItem value={700}>Sandy</MenuItem> 
-                    <MenuItem value={1000}>Paleto</MenuItem>        
+                    <MenuItem value={50}>Sul</MenuItem>
+                    <MenuItem value={70}>Sandy</MenuItem> 
+                    <MenuItem value={70}>Paleto</MenuItem>        
                   </Select>
                 </FormControl>
 
                 <FormControl variant='standard' sx={{ m: 1, width: '20ch' }}>
-                  <InputLabel id="demo-simple-select-label">Teve Delivery?</InputLabel>
+                  <InputLabel id="demo-simple-select-label">Teve reparo fora da mecanica?</InputLabel>
                   <Select
                     type='number'
                     labelId="demo-simple-select-label"
@@ -634,7 +632,7 @@ export default function Home() {
                     onChange={handleReparoForaChange}
                     value={String(ReparoFora)}
                     name="ReparoFora"
-                    label="Teve Delivery?"                    
+                    label="Teve DELIVERY?"                    
                   >
                     <MenuItem value={1}>Sim</MenuItem>
                     <MenuItem value={0}>Não</MenuItem>      
@@ -663,11 +661,11 @@ export default function Home() {
                     <input value={formData.result} type="hidden" name="result" id="" />
                     <input value={formData.quantidade} type="hidden" name="quantidade" id="" />
                     <input value={formData.tipo} type="hidden" name="tipo" id="" />
-                    <input value={QTDcarregador} type="hidden" name="QTDcarregador" id="" />
-                    <input value={QTDradio} type="hidden" name="QTDradio" id="" />
-                    <input value={QTDtablet} type="hidden" name="QTDtablet" id="" />
-                    <input value={QTDvpn} type="hidden" name="QTDvpn" id="" />
-                    <input value={QTDCelular} type="hidden" name="QTDCelular" id="" />
+                    <input value={QTDlockpick} type="hidden" name="QTDlockpick" id="" />
+                    <input value={QTDflipper} type="hidden" name="QTDflipper" id="" />
+                    <input value={QTDalicate} type="hidden" name="QTDalicate" id="" />
+                    <input value={QTDchave} type="hidden" name="QTDchave" id="" />
+                    <input value={QTDoleo} type="hidden" name="QTDoleo" id="" />
                     <input value={QTDbateria} type="hidden" name="QTDbateria" id="" />
                     <input value={ReparoFora} type="hidden" name="ReparoFora" id="" />
                     <input value={QTDkit} type="hidden" name="QTDkit" id="" />
@@ -723,7 +721,7 @@ export default function Home() {
           </section>             
         </div>
         <footer className={styles.assinatura}>
-          <p>© Feito por <a target='_blank' href="https://www.twitch.tv/yunorp_">YunoRP_</a></p>
+          <p>© Feito por <a target='_blank' href="https://www.twitch.tv/yunorp_">Yunorp_</a></p>
         </footer>
       </main>
   )
